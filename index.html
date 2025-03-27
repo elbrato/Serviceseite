@@ -1,33 +1,60 @@
+
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-      <title>Preisauskunft</title>
+  <title>Preisauskunft</title>
   <style>
     body {
-      background-image: url("/Bilder/holz.jpg");
-     background-size: cover; /* Das Bild wird proportional skaliert, um den gesamten Hintergrund abzudecken */
-     background-position: top;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+       background-color: #f5f5f7; /* Helles Grau für den Hintergrund */
+      font-family: 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 16px;
-      color: #333;
+      color: #333; /* Dunkelgrau */
       margin: 0;
       padding: 0;
     }
+
+
     h1 {
       text-align: left;
       padding-top: 10px;
       padding-left: 14px;
       margin: 0;
-      background-color: #353A3F;
-      color: #fff;
-      font-size: 32px;
+      background-color: #353A3F; /* Helles Grau */
+      color: #fff; /* Dunkelgrau */
+      font-size: 32px; 
       letter-spacing: 1px;
-      box-shadow: 0px 4px 8px rgba(58, 71, 78, 1); /* Schatten hinzugefügt */
-      border-bottom: 1px solid white;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid #ddd; 
     }
+                    
+  
+   /*
+   #lichterkette {                      
+  background-image: url("/Bilder/lichterkette.png"); 
+  background-repeat: repeat-x; 
+   background-size: 15%; 
+  height: 120px; /* Passe die Höhe nach Bedarf an */
+  width: auto;
+  margin-top: -25px; /* Abstand zum Header */
+  margin-bottom: -50px; /* Abstand zu den Icons */
+  animation: blinken 1s linear infinite;
+} 
 
+@keyframes blinken {
+    0% { opacity: 1; }
+   50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+*/
+
+          #topic-select {
+  display: flex; /* Ermöglicht Flexbox-Layout */
+  justify-content: center; /* Zentriert die Elemente horizontal */
+  align-items: center; /* Zentriert die Elemente vertikal */
+  flex-wrap: wrap; /* Ermöglicht Zeilenumbruch, falls die Icons nicht in eine Zeile passen */
+  width: 100%; /* Nutzt die volle Breite des Bildschirms */
+}       
 
     h1 img {
       float: right;
@@ -37,18 +64,24 @@
     .device-container {
       display: inline-block;
       text-align: center;
-      margin-bottom: 20px; /* Margin für Geräte */
+      margin-bottom: 20px;
     }
 
-
     .device {
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
-    /*box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Schatten hinzufügen */
-  }
+      display: inline-block;
+      text-align: center;
+      cursor: pointer;
+      margin: 10px;
+      padding: 2px; 
+      border-radius: 20px; 
+      background-color: white; 
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      transition: all 0.2s ease-in-out
+    }
 
-      /* Füge diese CSS-Regeln in deinem Stylesheet hinzu */
+   
+
+    /* Füge diese CSS-Regeln in deinem Stylesheet hinzu */
       #search-input {
         position: absolute;
         right: 0;
@@ -59,41 +92,38 @@
           background-size: 25px;
       }
 
+    .icon {
+      display: inline-block;
+      width: 100px; 
+      height: 100px;
+      margin: 20px; 
+      margin-top: 10px;
+      margin-bottom: 75px; 
+      border: 0px solid black;
+      text-align: center;
+      vertical-align: top;
+      font-family: 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
 
-  .icon {
-    display: inline-block;
-    width: 55px;
-    height: 55px;
-    margin: 80px;
-    margin-top: 10px;
-    margin-bottom: 70px;
-    border: 0px solid black;
-    text-align: center;
-    vertical-align: top;
-    font-family: Arial;
-    cursor: pointer;
-
-    /* added hover effects */
-    transition: all 0.25s ease-in-out;
-  }
-
-  .icon:hover {
+    .icon:hover {
     transform: scale(1.2); /* increase the size */
     box-shadow: 0px 4px 8px rgba(58, 71, 78, 0.5); /* add a shadow */
     border-radius: 60%; /* make the icon round */
 
   }
 
-  .icon img {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-  }
+    .icon img {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+    }
 
-  @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-  }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
 
     div.table {
       display: none;
@@ -103,24 +133,23 @@
       transform: translateX(-50%);
       width: auto;
       height: auto;
-      border: 0px solid grey;
-      background-color: white;
-      padding: 0px;
-      max-width: 100%; /* Begrenze die maximale Breite der Tabelle auf 80% des Bildschirms */
-      max-height: 80%;
-      overflow: auto; /* Zeige einen Scrollbalken an, wenn der Inhalt die Tabelle überläuft */
-      border-radius: 10px; /* Runde Ecken hinzufügen */
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Schatten hinzufügen */
-      animation: fadeIn 1s;
+       border: 1px solid #ddd;
+      background-color: #f9f9f9;
+      padding: 2px;
+      max-width: 100%; 
+      max-height: 80%; 
+      overflow: auto; 
+      border-radius: 30px; 
+      box-shadow: 0px 9px 9px rgba(0, 0, 1.2, 1.2);
+      animation: fadeIn 0.5s;
     }
 
-
     table {
-      font-family: Arial, sans-serif;
+      font-family: 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       border-collapse: collapse;
-      width: 30cm;
+      width: 30cm; 
       text-align: center;
-      margin: 0px auto;
+      margin: 20px auto; 
     }
 
     th, td {
@@ -129,87 +158,104 @@
     }
 
     th {
-        background-color: #0a0000;
-        color: white;
-        font-weight: bold;
-        padding: 10px;
-        font-size: 18px;
-        border-left: 1px solid white;
+      background-color: #333; 
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      font-size: 16px; 
+      border-left: 1px solid white; 
+    }
 
-}
     tr:nth-child(odd) {
-      background-color: #ECECEC;
+      background-color: #f5f5f7;
     }
+
     tr:nth-child(even) {
-      background-color: #f2f2f2;
+      background-color: white;
     }
+
     tr:hover {
-  background-color: #f5c642;
-  transition: background-color 0.2s ease-in;
-}
+      background-color: #f0f0f5; 
+      transition: background-color 0.2s ease-in;
+    }
+
     td {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'San Francisco', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 14px;
       text-align: center;
     }
+
     .center {
       text-align: center;
     }
 
     .center h1 {
       text-align: center;
+      padding: 20px;
     }
-
-
   </style>
 </head>
 <body>
+
   <h1>
     <a onclick="showEasterEgg()">Preisliste</a>
     <input type="text" id="search-input" placeholder="" style="padding: 5px; border: 2px solid #ccc; border-radius: 14px; font-size: 16px;">
+  </h1>
 
-     ‍      ‍     ‍      ‍   <!--<mark>Aktuell kein Same Day Service!</mark>-->
+  <script>
+    function showEasterEgg() {
+      var canvas = document.createElement("canvas");
+      var ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      document.body.appendChild(canvas);
 
-</h1>
+      var image = new Image();
+      image.src = "/Bilder/thisisfine.jpg";
+      var x = -120;
+      var y = canvas.height / 5 - 60;
+      var speed = 10;
+      function drawImage() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(image, x, y);
+        x += speed;
+        if (x > canvas.width) {
+          x = -120;
+        }
+        requestAnimationFrame(drawImage);
+      }
 
-<script>
-function showEasterEgg() {
-  // Hier kannst du den Code für dein Easter-Egg einfügen
-  // Zum Beispiel: Animation oder verstecktes Feature
-  var canvas = document.createElement("canvas");
-  var ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  document.body.appendChild(canvas);
-
-  var image = new Image();
-  image.src = "/Bilder/thisisfine.jpg";
-  var x = -120;
-  var y = canvas.height / 5 - 60;
-  var speed = 10;
-
-  function drawImage() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(image, x, y);
-    x += speed;
-    if (x > canvas.width) {
-      x = -120;
+      drawImage();
+      canvas.addEventListener("click", removeEasterEgg);
     }
-    requestAnimationFrame(drawImage);
-  }
 
-  drawImage();
+    function removeEasterEgg() {
+      var canvas = document.querySelector("canvas");
+      document.body.removeChild(canvas);
+    }
 
-  // Event Listener für den Canvas hinzufügen
-  canvas.addEventListener("click", removeEasterEgg);
-}
+    function showList(listId) {
+      var list = document.getElementById(listId + "-list");
+      if (list.style.display === "none") {
+        list.style.display = "block";
+      } else {
+        list.style.display = "none";
+      }
+    }
 
-function removeEasterEgg() {
-  // Canvas aus dem Dokument entfernen
-  var canvas = document.querySelector("canvas");
-  document.body.removeChild(canvas);
-}
-</script>
+    function showTable(tableId) {
+      var table = document.getElementById(tableId);
+      if (table.style.display === "none") {
+        table.style.display = "block";
+      } else {
+        table.style.display = "none";
+      }
+    }
+  </script>
+
+  <div id="lichterkette"></div>
+  
+
 
 <div id="topic-select">
     <div class="icon" onclick="showList('iphone')">
@@ -248,6 +294,8 @@ function removeEasterEgg() {
   <img src="https://img.icons8.com/?size=512&id=9i9HlS0bGONj&format=png" alt="zubehör" width="200" height="200">
   <p><b>Zubehör</b></p>
 </div>
+
+
 
   <!-- Die Liste der iPhone-Modelle in ein div-Element eingebettet -->
   <div id="iphone-list" style="display:none;">
@@ -312,7 +360,7 @@ function removeEasterEgg() {
           </table>
           <h1>Austausch- und Reparaturerweiterungsprogramme</h1>
 <p><a href="https://support.apple.com/de-de/iphone-6s-6s-plus-no-power-issues-program">Serviceprogramm für das iPhone 6s und iPhone 6s Plus bei Stromversorgungsproblemen</a> - OP2227<br>
-							<small>Apple hat festgestellt, dass sich bestimmte iPhone 6s- und iPhone 6s Plus-Geräte aufgrund einer Komponente, die möglicherweise ausfällt, eventuell nicht einschalten lassen. Dieses Problem betrifft nur Geräte aus einem bestimmten Seriennummernbereich, die zwischen Oktober 2018 und August 2019 hergestellt wurden. <strong>Seriennummer auf obiger Seite prüfen!</strong></small></p>
+              <small>Apple hat festgestellt, dass sich bestimmte iPhone 6s- und iPhone 6s Plus-Geräte aufgrund einer Komponente, die möglicherweise ausfällt, eventuell nicht einschalten lassen. Dieses Problem betrifft nur Geräte aus einem bestimmten Seriennummernbereich, die zwischen Oktober 2018 und August 2019 hergestellt wurden. <strong>Seriennummer auf obiger Seite prüfen!</strong></small></p>
           <h1>Apple Care+ Serviceleistungen</h1>
           <table>
             <tr>
@@ -438,37 +486,37 @@ function removeEasterEgg() {
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>389€</td>
+      <td>399€</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td>Nur noch mit <b>Vorkasse</b></td>
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>Nicht mehr Verfügbar</td>
+      <td>Nicht mehr verfügbar</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td> 85€</td>
+      <td> 89€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>119€</td>
+      <td>Nicht mehr verfügbar</td>
       <td>Nein</td>
-      <td>3 - 4 Werktage</td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Unterer Lautsprecher</td>
-      <td>119€</td>
+      <td>Nicht mehr Verfügbar</td>
       <td>Nein</td>
-      <td>3 - 4 Werktage</td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
@@ -481,7 +529,7 @@ function removeEasterEgg() {
   </table>
   <h1>Austausch- und Reparaturerweiterungsprogramme</h1>
   <p><a href="http://www.apple.com/support/iphone-7-no-service/">iPhone 7-Reparaturprogramm bei Problemen des Typs &quot;Kein Netz&quot;</a> - OP1959<br>
-							<small>Apple hat festgestellt, dass einige wenige iPhone 7-Geräte nach Ausfall einer Komponente auf der Hauptplatine möglicherweise "Kein Netz" in der Statusleiste anzeigen. <strong>Betrifft nur Modell A1660, A1779, A1780! Abgedeckt für 4 Jahre ab Kauf.</strong></small></p>
+              <small>Apple hat festgestellt, dass einige wenige iPhone 7-Geräte nach Ausfall einer Komponente auf der Hauptplatine möglicherweise "Kein Netz" in der Statusleiste anzeigen. <strong>Betrifft nur Modell A1660, A1779, A1780! Abgedeckt für 4 Jahre ab Kauf.</strong></small></p>
   <h1>Apple Care+ Serviceleistungen</h1>
   <table>
     <tr>
@@ -497,7 +545,7 @@ function removeEasterEgg() {
     <tr>
       <td>Displayschaden</td>
       <td>29€</td>
-      <td></td>
+      <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
     </tr>
   </table>
         </div>
@@ -528,37 +576,37 @@ function removeEasterEgg() {
       </tr>
       <tr>
         <td>Displayreparatur</td>
-        <td>Nicht mehr Verfügbar</td>
+        <td>Nicht mehr verfügbar</td>
         <td>Ja</td>
-        <td>3 - 4 Werktage</td>
-        <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>Batterieservice</td>
         <td> 85€</td>
         <td>Ja</td>
         <td>3 - 4 Werktage</td>
-        <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+        <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
       </tr>
       <tr>
         <td>Kameratausch</td>
-        <td>139€</td>
+        <td>Nicht mehr verfügbar</td>
         <td>Nein</td>
-        <td>3 - 4 Werktage</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>Unterer Lautsprecher</td>
-        <td>119€</td>
+        <td>Nicht mehr verfügbar</td>
         <td>Nein</td>
-        <td>3 - 4 Werktage</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>Taptic Engine</td>
-        <td>99€</td>
+        <td>Nicht mehr verfügbar</td>
         <td>Nein</td>
-        <td>3 - 4 Werktage</td>
+        <td></td>
         <td></td>
       </tr>
     </table>
@@ -577,7 +625,7 @@ function removeEasterEgg() {
       <tr>
         <td>Displayschaden</td>
         <td>29€</td>
-        <td></td>
+        <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
       </tr>
     </table>
         </div>
@@ -601,44 +649,44 @@ function removeEasterEgg() {
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>419€</td>
+      <td>429€</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>185€</td>
+      <td>195€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>85€</td>
+      <td>89€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>119€</td>
+      <td>Nicht mehr verfügbar</td>
       <td>Nein</td>
-      <td>3 - 4 Werktage</td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Unterer Lautsprecher</td>
-      <td>119€</td>
+      <td>Nicht mehr verfügbar</td>
       <td>Nein</td>
-      <td>3 - 4 Werktage</td>
+      <td></td>
       <td></td>
     </tr>
     <tr>
       <td>Taptic Engine</td>
-      <td>99€</td>
+      <td>Nicht mehr verfügbar</td>
       <td>Nein</td>
-      <td>3 - 4 Werktage</td>
+      <td></td>
       <td></td>
     </tr>
   </table>
@@ -657,7 +705,7 @@ function removeEasterEgg() {
     <tr>
       <td>Displayschaden</td>
       <td>29€</td>
-      <td></td>
+      <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
     </tr>
   </table>
         </div>
@@ -689,39 +737,37 @@ function removeEasterEgg() {
       </tr>
       <tr>
         <td>Displayreparatur</td>
-        <td>209€</td>
+        <td>219€</td>
         <td>Ja</td>
         <td>3 - 4 Werktage</td>
-        <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+        <td>R<mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
       </tr>
       <tr>
         <td>Batterieservice</td>
-        <td>85€</td>
+        <td>89€</td>
         <td>Ja</td>
         <td>3 - 4 Werktage</td>
-        <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+        <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
       </tr>
       <tr>
         <td>Kameratausch</td>
-        <td>139€</td>
-
+        <td>Nicht mehr verfügbar</td>
         <td>Nein</td>
-        <td>3 - 4 Werktage</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>Unterer Lautsprecher</td>
-        <td>119€</td>
-
+        <td>Nicht mehr verfügbar</td>
         <td>Nein</td>
-        <td>3 - 4 Werktage</td>
+        <td></td>
         <td></td>
       </tr>
       <tr>
         <td>Taptic Engine</td>
-        <td>99€</td>
+        <td>Nicht mehr verfügbar</td>
         <td>Nein</td>
-        <td>3 - 4 Werktage</td>
+        <td></td>
         <td></td>
       </tr>
     </table>
@@ -740,7 +786,7 @@ function removeEasterEgg() {
       <tr>
         <td>Displayschaden</td>
         <td>29€</td>
-        <td></td>
+        <td><mark>Nur noch bei einem schwarzen Display verfügbar</mark></td>
       </tr>
     </table>
         </div>
@@ -764,21 +810,21 @@ function removeEasterEgg() {
         </tr>
         <tr>
           <td>Komplettaustausch</td>
-          <td>659€</td>
+          <td>669€</td>
           <td>Nein</td>
           <td>3 - 4 Werktage</td>
           <td></td>
         </tr>
         <tr>
           <td>Displayreparatur</td>
-          <td>339€</td>
+          <td>349€</td>
           <td>Ja</td>
           <td>3 - 4 Werktage</td>
           <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
         </tr>
         <tr>
           <td>Batterieservice</td>
-          <td>105€</td>
+          <td>109€</td>
           <td>Ja</td>
           <td>3 - 4 Werktage</td>
           <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
@@ -793,7 +839,7 @@ function removeEasterEgg() {
         </tr>
         <tr>
           <td>Kameratausch</td>
-          <td>139€</td>
+          <td>159€</td>
 
           <td>Nein</td>
           <td>3 - 4 Werktage</td>
@@ -818,7 +864,7 @@ function removeEasterEgg() {
       </table>
       <h1>Austausch- und Reparaturerweiterungsprogramme</h1>
       <p><a href="https://support.apple.com/de-de/iphone-x-display-module-replacement-program">Austauschprogramm für das iPhone X-Displaymodul bei Touch-Problemen</a> - OP2113<br>
-							<small>Das Display, oder ein Teil des Displays, reagiert nicht oder nicht zuverlässig auf Berührung.<br>
+              <small>Das Display, oder ein Teil des Displays, reagiert nicht oder nicht zuverlässig auf Berührung.<br>
 Das Display reagiert, obwohl es nicht berührt wurde.<br>
 Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kostenlos. <strong><br><br><mark>Gültig für drei (3) Jahre ab Kauf.</mark></strong></small></p>
       <h1>Apple Care+ Serviceleistungen</h1>
@@ -860,21 +906,21 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
           </tr>
           <tr>
             <td>Komplettaustausch</td>
-            <td>659€</td>
+            <td>669€</td>
             <td>Nein</td>
             <td>3 - 4 Werktage</td>
             <td></td>
           </tr>
           <tr>
             <td>Displayreparatur</td>
-            <td>339€</td>
+            <td>349€</td>
             <td>Ja</td>
             <td>3 - 4 Werktage</td>
             <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
           </tr>
           <tr>
             <td>Batterieservice</td>
-            <td>105€</td>
+            <td>109€</td>
             <td>Ja</td>
             <td>3 - 4 Werktage</td>
             <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
@@ -888,7 +934,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
           </tr>
           <tr>
             <td>Kameratausch</td>
-            <td>139€</td>
+            <td>159€</td>
             <td>Nein</td>
             <td>3 - 4 Werktage</td>
             <td></td>
@@ -947,21 +993,21 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>729€</td>
+      <td>739€</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>405€</td>
+      <td>415€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
@@ -975,7 +1021,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>139€</td>
+      <td>159€</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td></td>
@@ -1035,7 +1081,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>339€</td>
+      <td>Nicht mehr Verfügbar</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1050,14 +1096,14 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>165€</td>
+      <td>Nicht mehr Verfügbar</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td>Muss für Reparatur zu Apple eingesendet werden. Datensicherung ist Pflicht!</td>
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>119€</td>
+      <td>Nicht mehr Verfügbar</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1073,12 +1119,12 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Sonstiger Schaden</td>
-        <td>99€</td>
+        <td>N/A</td>
         <td></td>
       </tr>
       <tr>
         <td>Displayschaden</td>
-        <td>29€</td>
+        <td>N/A</td>
         <td></td>
       </tr>
     </table>
@@ -1104,7 +1150,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
       <td>Komplettaustausch</td>
-      <td>399€</td>
+      <td>349€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1112,21 +1158,21 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
       <td>Displayreparatur</td>
-      <td>185€</td>
+      <td>195€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag je nach Ersatzteilverfügbarkeit und Kapazität der Technik.</td>
       </tr>
       <tr>
       <td>Batterietausch</td>
-      <td>85€</td>
+      <td>89€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag je nach Ersatzteilverfügbarkeit und Kapazität der Technik.</td>
       </tr>
       <tr>
       <td>Kameratausch</td>
-      <td>119€</td>
+      <td>139€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag je nach Ersatzteilverfügbarkeit und Kapazität der Technik.</td>
@@ -1184,7 +1230,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
       <td>Komplettaustausch</td>
-      <td>399€</td>
+      <td>409€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1192,21 +1238,21 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
       <td>Displayreparatur</td>
-      <td>185€</td>
+      <td>195€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag je nach Ersatzteilverfügbarkeit und Kapazität der Technik.</td>
       </tr>
       <tr>
       <td>Batterietausch</td>
-      <td>85€</td>
+      <td>89€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag je nach Ersatzteilverfügbarkeit und Kapazität der Technik.</td>
       </tr>
       <tr>
       <td>Kameratausch</td>
-      <td>119€</td>
+      <td>139€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag je nach Ersatzteilverfügbarkeit und Kapazität der Technik.</td>
@@ -1264,7 +1310,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Komplettaustausch</td>
-        <td>419€</td>
+        <td>429€</td>
 
         <td>Nein</td>
         <td>3 - 4 Werktage</td>
@@ -1272,7 +1318,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Displayreparatur</td>
-        <td>239€</td>
+        <td>249€</td>
 
         <td>Ja</td>
         <td>3 - 4 Werktage</td>
@@ -1280,7 +1326,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Batterieservice</td>
-        <td>105€</td>
+        <td>109€</td>
 
         <td>Ja</td>
         <td>3 - 4 Werktage</td>
@@ -1296,7 +1342,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Kameratausch</td>
-        <td>139€</td>
+        <td>159€</td>
 
         <td>Nein</td>
         <td>3 - 4 Werktage</td>
@@ -1359,7 +1405,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>419€</td>
+      <td>429€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1367,7 +1413,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>239€</td>
+      <td>249€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1375,7 +1421,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1391,7 +1437,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>139€</td>
+      <td>159€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1415,7 +1461,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
   </table>
   <p><a href="https://support.apple.com/de-de/iphone-11-display-module-replacement-program">Austauschprogramm für das iPhone 11-Displaymodul bei Touch-Problemen</a> - OP2423<br>
-							<small>Apple hat festgestellt, dass es bei einigen wenigen iPhone 11-Displays aufgrund eines Problems mit dem Displaymodul dazu kommen kann, dass sie nicht mehr auf Berührungen reagieren. Die betroffenen Geräte wurden zwischen November 2019 und Mai 2020 hergestellt.
+              <small>Apple hat festgestellt, dass es bei einigen wenigen iPhone 11-Displays aufgrund eines Problems mit dem Displaymodul dazu kommen kann, dass sie nicht mehr auf Berührungen reagieren. Die betroffenen Geräte wurden zwischen November 2019 und Mai 2020 hergestellt.
 
 Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kostenlos.</small></p>
   <h1>Apple Care+ Serviceleistungen</h1>
@@ -1458,7 +1504,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Komplettaustausch</td>
-        <td>659€</td>
+        <td>669€</td>
 
         <td>Nein</td>
         <td>3 - 4 Werktage</td>
@@ -1466,7 +1512,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Displayreparatur</td>
-        <td>339€</td>
+        <td>349€</td>
 
         <td>Ja</td>
         <td>3 - 4 Werktage</td>
@@ -1474,7 +1520,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Batterieservice</td>
-        <td>105€</td>
+        <td>109€</td>
 
         <td>Ja</td>
         <td>3 - 4 Werktage</td>
@@ -1490,7 +1536,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
       </tr>
       <tr>
         <td>Kameratausch</td>
-        <td>179€</td>
+        <td>199€</td>
 
         <td>Nein</td>
         <td>3 - 4 Werktage</td>
@@ -1553,7 +1599,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>729€</td>
+      <td>739€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1561,7 +1607,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>405€</td>
+      <td>415€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1569,7 +1615,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1585,7 +1631,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>179€</td>
+      <td>199€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -1647,28 +1693,28 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>419€</td>
+      <td>429€</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>279€</td>
+      <td>289€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>369€</td>
+      <td>359€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1684,7 +1730,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>199€</td>
+      <td>209€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1762,28 +1808,28 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>539€</td>
+      <td>509€</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>339€</td>
+      <td>349€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>439€</td>
+      <td>409€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1799,7 +1845,7 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>219€</td>
+      <td>209€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1823,8 +1869,8 @@ Apple Service Provider ersetzen das Displaymodul bei qualifizierten Geräten kos
     </tr>
           </table>
           <h1>Austausch- und Reparaturerweiterungsprogramme</h1>
-							<p><a href="https://support.apple.com/de-de/iphone-12-and-iphone-12-pro-service-program-for-no-sound-issues">Serviceprogramm für iPhone 12 und iPhone 12 Pro bei Tonproblemen</a> - OP2581<br>
-							<small>Apple hat festgestellt, dass bei einem sehr kleinen Prozentsatz der iPhone 12- und iPhone 12 Pro-Geräte Tonprobleme auftreten können, die auf eine Komponente des Hörermoduls zurückzuführen sind. Die betroffenen Geräte wurden zwischen Oktober 2020 und April 2021 hergestellt.
+              <p><a href="https://support.apple.com/de-de/iphone-12-and-iphone-12-pro-service-program-for-no-sound-issues">Serviceprogramm für iPhone 12 und iPhone 12 Pro bei Tonproblemen</a> - OP2581<br>
+              <small>Apple hat festgestellt, dass bei einem sehr kleinen Prozentsatz der iPhone 12- und iPhone 12 Pro-Geräte Tonprobleme auftreten können, die auf eine Komponente des Hörermoduls zurückzuführen sind. Die betroffenen Geräte wurden zwischen Oktober 2020 und April 2021 hergestellt.
 
 Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen von Anrufen keinen Ton über den Hörer ausgibt, kann Anspruch auf Serviceleistungen bestehen.</small></p>
           <h1>Apple Care+ Serviceleistungen</h1>
@@ -1881,28 +1927,28 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>659€</td>
+      <td>669€</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>339€</td>
+      <td>349€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>559€</td>
+      <td>529€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1918,7 +1964,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>249€</td>
+      <td>239€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -1942,8 +1988,8 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
           </table>
           <h1>Austausch- und Reparaturerweiterungsprogramme</h1>
-							<p><a href="https://support.apple.com/de-de/iphone-12-and-iphone-12-pro-service-program-for-no-sound-issues">Serviceprogramm für iPhone 12 und iPhone 12 Pro bei Tonproblemen</a> - OP2581<br>
-							<small>Apple hat festgestellt, dass bei einem sehr kleinen Prozentsatz der iPhone 12- und iPhone 12 Pro-Geräte Tonprobleme auftreten können, die auf eine Komponente des Hörermoduls zurückzuführen sind. Die betroffenen Geräte wurden zwischen Oktober 2020 und April 2021 hergestellt.
+              <p><a href="https://support.apple.com/de-de/iphone-12-and-iphone-12-pro-service-program-for-no-sound-issues">Serviceprogramm für iPhone 12 und iPhone 12 Pro bei Tonproblemen</a> - OP2581<br>
+              <small>Apple hat festgestellt, dass bei einem sehr kleinen Prozentsatz der iPhone 12- und iPhone 12 Pro-Geräte Tonprobleme auftreten können, die auf eine Komponente des Hörermoduls zurückzuführen sind. Die betroffenen Geräte wurden zwischen Oktober 2020 und April 2021 hergestellt.
 
 Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen von Anrufen keinen Ton über den Hörer ausgibt, kann Anspruch auf Serviceleistungen bestehen.</small></p>
           <h1>Apple Care+ Serviceleistungen</h1>
@@ -2001,28 +2047,28 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>729€</td>
+      <td>739€</td>
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>405€</td>
+      <td>415€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>629</td>
+      <td>609€</td>
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2038,7 +2084,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>249€</td>
+      <td>239€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2116,7 +2162,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>419€</td>
+      <td>429€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -2124,7 +2170,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>279€</td>
+      <td>289€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2132,7 +2178,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>369€</td>
+      <td>359€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2140,7 +2186,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2156,7 +2202,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>219€</td>
+      <td>209€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2242,7 +2288,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>539€</td>
+      <td>509€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -2250,7 +2296,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>339€</td>
+      <td>349€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2258,7 +2304,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>439€</td>
+      <td>409€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2266,7 +2312,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2282,7 +2328,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>219€</td>
+      <td>209€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2368,7 +2414,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>659€</td>
+      <td>669€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -2376,7 +2422,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>339€</td>
+      <td>349€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2384,7 +2430,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>559€</td>
+      <td>539€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2392,7 +2438,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2408,7 +2454,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>249€</td>
+      <td>239€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2494,7 +2540,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>729€</td>
+      <td>739€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -2510,7 +2556,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>629€</td>
+      <td>609€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2518,7 +2564,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>105€</td>
+      <td>109€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2534,7 +2580,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>249€</td>
+      <td>239€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2620,7 +2666,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>729€</td>
+      <td>730€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -2628,7 +2674,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>405€</td>
+      <td>415€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2636,7 +2682,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rückseitentausch</td>
-      <td>229€</td>
+      <td>239€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2644,7 +2690,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>125€</td>
+      <td>119€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2660,7 +2706,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>259€</td>
+      <td>209€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2711,17 +2757,12 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
             <tr>
               <td>Rückglasschäden</td>
               <td>29€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
+              <td></td>
             </tr>
             <tr>
               <td>Display- und Rückglasschäden</td>
               <td>58€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
-            </tr>
-            <tr>
-              <td>Kameraglas</td>
-              <td>99€</td>
-              <td>Apple sieht Schäden am Kameraglas als sonstige Schäden an.</td>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -2746,7 +2787,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>659€</td>
+      <td>669€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -2754,7 +2795,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>339€</td>
+      <td>349€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2762,7 +2803,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rückseitentausch</td>
-      <td>199€</td>
+      <td>209€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2770,7 +2811,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>125€</td>
+      <td>119€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2786,7 +2827,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>259€</td>
+      <td>209€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2837,17 +2878,12 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
             <tr>
               <td>Rückglasschäden</td>
               <td>29€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
+              <td></td>
             </tr>
             <tr>
               <td>Display- und Rückglasschäden</td>
               <td>58€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
-            </tr>
-            <tr>
-              <td>Kameraglas</td>
-              <td>99€</td>
-              <td>Apple sieht Schäden am Kameraglas als sonstige Schäden an.</td>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -2872,7 +2908,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>799€</td>
+      <td>809€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -2880,7 +2916,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>405€</td>
+      <td>415€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2888,7 +2924,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>599€</td>
+      <td>609€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2896,7 +2932,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>125€</td>
+      <td>119€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2912,7 +2948,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>299€</td>
+      <td>269€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -2998,7 +3034,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>859€</td>
+      <td>869€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -3006,7 +3042,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>489€</td>
+      <td>499€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -3014,7 +3050,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rücksystemtausch</td>
-      <td>669€</td>
+      <td>679€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -3022,7 +3058,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>125€</td>
+      <td>119€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -3038,7 +3074,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>299€</td>
+      <td>269€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -3123,7 +3159,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>729€</td>
+      <td>739€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -3131,7 +3167,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>405€</td>
+      <td>415€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -3139,59 +3175,28 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rückseitentausch</td>
-      <td>229€</td>
+      <td>239€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>125€</td>
+      <td>119€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     </<tr>
-      <td>Face ID / Frontkamera</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>TBA</td>
+      <td>209€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Hörer / Stereolautsprecher</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Unterer Lautsprecher</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Taptic Engine</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td></td>
     </tr>
           </table>
           <h1>Apple Care+ Serviceleistungen</h1>
@@ -3214,17 +3219,12 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
             <tr>
               <td>Rückglasschäden</td>
               <td>29€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
+              <td></td>
             </tr>
             <tr>
               <td>Display- und Rückglasschäden</td>
               <td>58€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
-            </tr>
-            <tr>
-              <td>Kameraglas</td>
-              <td>99€</td>
-              <td>Apple sieht Schäden am Kameraglas als sonstige Schäden an.</td>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -3248,7 +3248,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>659€</td>
+      <td>669€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -3256,7 +3256,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>339€</td>
+      <td>349€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -3264,59 +3264,28 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rückseitentausch</td>
-      <td>199€</td>
+      <td>209€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>125€</td>
+      <td>119€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
       <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
     </tr>
     </<tr>
-      <td>Face ID / Frontkamera</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>TBA</td>
+      <td>209€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Hörer / Stereolautsprecher</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Unterer Lautsprecher</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Taptic Engine</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td></td>
     </tr>
           </table>
           <h1>Apple Care+ Serviceleistungen</h1>
@@ -3339,17 +3308,12 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
             <tr>
               <td>Rückglasschäden</td>
               <td>29€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
+              <td></td>
             </tr>
             <tr>
               <td>Display- und Rückglasschäden</td>
               <td>58€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
-            </tr>
-            <tr>
-              <td>Kameraglas</td>
-              <td>99€</td>
-              <td>Apple sieht Schäden am Kameraglas als sonstige Schäden an.</td>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -3373,7 +3337,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>799€</td>
+      <td>809€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -3381,7 +3345,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>405€</td>
+      <td>415€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -3389,23 +3353,15 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rückseitentausch</td>
-      <td>199€</td>
+      <td>209€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>125€</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    </<tr>
-      <td>Face ID / Frontkamera</td>
-      <td>TBA</td>
+      <td>119€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -3413,35 +3369,11 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>TBA</td>
+      <td>269€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Hörer / Stereolautsprecher</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Unterer Lautsprecher</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Taptic Engine</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td></td>
     </tr>
           </table>
           <h1>Apple Care+ Serviceleistungen</h1>
@@ -3464,17 +3396,12 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
             <tr>
               <td>Rückglasschäden</td>
               <td>29€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
+              <td></td>
             </tr>
             <tr>
               <td>Display- und Rückglasschäden</td>
               <td>58€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
-            </tr>
-            <tr>
-              <td>Kameraglas</td>
-              <td>99€</td>
-              <td>Apple sieht Schäden am Kameraglas als sonstige Schäden an.</td>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -3498,7 +3425,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>859€</td>
+      <td>869€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -3506,7 +3433,7 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Displayreparatur</td>
-      <td>489€</td>
+      <td>499€</td>
 
       <td>Ja</td>
       <td>3 - 4 Werktage</td>
@@ -3514,23 +3441,15 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Rückseitentausch</td>
-      <td>229€</td>
+      <td>239€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>125€</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    </<tr>
-      <td>Face ID / Frontkamera</td>
-      <td>TBA</td>
+      <td>119€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
@@ -3538,35 +3457,11 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Kameratausch</td>
-      <td>TBA</td>
+      <td>309€</td>
 
       <td>Nein</td>
       <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Hörer / Stereolautsprecher</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Unterer Lautsprecher</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
-    </tr>
-    <tr>
-      <td>Taptic Engine</td>
-      <td>TBA</td>
-
-      <td>Nein</td>
-      <td>3 - 4 Werktage</td>
-      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+      <td></td>
     </tr>
           </table>
           <h1>Apple Care+ Serviceleistungen</h1>
@@ -3589,17 +3484,367 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
             <tr>
               <td>Rückglasschäden</td>
               <td>29€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
+              <td></td>
             </tr>
             <tr>
               <td>Display- und Rückglasschäden</td>
               <td>58€</td>
-              <td>Schäden die nur das Kameraglas betreffen, zählen <b>nicht</b> als Rückglasschaden.</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="device" onclick="showTable('iphone16Plus')">
+        <div class="center">
+        <img src="/Bilder/iphone16plus.png" alt="iPhone 16Plus" width="200" height="200">
+        <p><b>iPhone 16 Plus</b></p>
+      </div>
+          <div class="table center" id="iphone16Plus">
+            <h1>iPhone 16 Plus</h1>
+            <table>
+            <tr>
+      <th>Service</th>
+      <th>Preis</th>
+
+      <th>Same Day</th>
+      <th>Dauer</th>
+      <th>Bemerkung</th>
+
+    </tr>
+    <tr>
+      <td>Komplettaustausch</td>
+      <td>739€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Displayreparatur</td>
+      <td>415€</td>
+
+      <td>Ja</td>
+      <td>3 - 4 Werktage</td>
+      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+    </tr>
+    <tr>
+      <td>Rückseitentausch</td>
+      <td>239€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Batterieservice</td>
+      <td>119€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+    </tr>
+    </<tr>
+    <tr>
+      <td>Kameratausch</td>
+      <td>209€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+          </table>
+          <h1>Apple Care+ Serviceleistungen</h1>
+          <table>
+            <tr>
+              <th>Schadensart</th>
+              <th>Selbstbeteiligung</th>
+              <th>Bemerkung</th>
             </tr>
             <tr>
-              <td>Kameraglas</td>
+              <td>Sonstiger Schaden</td>
               <td>99€</td>
-              <td>Apple sieht Schäden am Kameraglas als sonstige Schäden an.</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Displayschaden</td>
+              <td>29€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rückglasschäden</td>
+              <td>29€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Display- und Rückglasschäden</td>
+              <td>58€</td>
+              <td></td>
+            </tr>
+            <tr>
+          </table>
+        </div>
+      </div>
+<div class="device" onclick="showTable('iphone16')">
+        <div class="center">
+        <img src="/Bilder/iphone16.png" alt="iPhone 16" width="200" height="200">
+        <p><b>iPhone 16</b></p>
+      </div>
+          <div class="table center" id="iphone16">
+            <h1>iPhone 16</h1>
+            <table>
+            <tr>
+      <th>Service</th>
+      <th>Preis</th>
+
+      <th>Same Day</th>
+      <th>Dauer</th>
+      <th>Bemerkung</th>
+
+    </tr>
+    <tr>
+      <td>Komplettaustausch</td>
+      <td>669€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Displayreparatur</td>
+      <td>349€</td>
+
+      <td>Ja</td>
+      <td>3 - 4 Werktage</td>
+      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+    </tr>
+    <tr>
+      <td>Rückseitentausch</td>
+      <td>209€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Batterieservice</td>
+      <td>119€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+    </tr>
+    </<tr>
+    <tr>
+      <td>Kameratausch</td>
+      <td>209€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+          </table>
+          <h1>Apple Care+ Serviceleistungen</h1>
+          <table>
+            <tr>
+              <th>Schadensart</th>
+              <th>Selbstbeteiligung</th>
+              <th>Bemerkung</th>
+            </tr>
+            <tr>
+              <td>Sonstiger Schaden</td>
+              <td>99€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Displayschaden</td>
+              <td>29€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rückglasschäden</td>
+              <td>29€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Display- und Rückglasschäden</td>
+              <td>58€</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+<div class="device" onclick="showTable('iphone16Pro')">
+        <div class="center">
+        <img src="/Bilder/iphone16pro.png" alt="iPhone 16Pro" width="200" height="200">
+        <p><b>iPhone 16 Pro</b></p>
+      </div>
+          <div class="table center" id="iphone16Pro">
+            <h1>iPhone 16 Pro</h1>
+            <table>
+            <tr>
+      <th>Service</th>
+      <th>Preis</th>
+
+      <th>Same Day</th>
+      <th>Dauer</th>
+      <th>Bemerkung</th>
+
+    </tr>
+    <tr>
+      <td>Komplettaustausch</td>
+      <td>809€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Displayreparatur</td>
+      <td>415€</td>
+
+      <td>Ja</td>
+      <td>3 - 4 Werktage</td>
+      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+    </tr>
+    <tr>
+      <td>Rückseitentausch</td>
+      <td>209€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Batterieservice</td>
+      <td>145€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+    </tr>
+    <tr>
+      <td>Kameratausch</td>
+      <td>309€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+          </table>
+          <h1>Apple Care+ Serviceleistungen</h1>
+          <table>
+            <tr>
+              <th>Schadensart</th>
+              <th>Selbstbeteiligung</th>
+              <th>Bemerkung</th>
+            </tr>
+            <tr>
+              <td>Sonstiger Schaden</td>
+              <td>99€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Displayschaden</td>
+              <td>29€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rückglasschäden</td>
+              <td>29€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Display- und Rückglasschäden</td>
+              <td>58€</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+<div class="device" onclick="showTable('iphone16ProMax')">
+        <div class="center">
+        <img src="/Bilder/iphone16promax.png" alt="iPhone 16ProMax" width="200" height="200">
+        <p><b>iPhone 16 Pro Max</b></p>
+      </div>
+          <div class="table center" id="iphone16ProMax">
+            <h1>iPhone 16 Pro Max</h1>
+            <table>
+            <tr>
+      <th>Service</th>
+      <th>Preis</th>
+
+      <th>Same Day</th>
+      <th>Dauer</th>
+      <th>Bemerkung</th>
+
+    </tr>
+    <tr>
+      <td>Komplettaustausch</td>
+      <td>909€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Displayreparatur</td>
+      <td>499€</td>
+
+      <td>Ja</td>
+      <td>3 - 4 Werktage</td>
+      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+    </tr>
+    <tr>
+      <td>Rückseitentausch</td>
+      <td>239€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Batterieservice</td>
+      <td>145€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td>Reparatur am selben Tag, je nach Ersatzteilverfügbarkeit und Kapazität der Technik</td>
+    </tr>
+    <tr>
+      <td>Kameratausch</td>
+      <td>309€</td>
+
+      <td>Nein</td>
+      <td>3 - 4 Werktage</td>
+      <td></td>
+    </tr>
+          </table>
+          <h1>Apple Care+ Serviceleistungen</h1>
+          <table>
+            <tr>
+              <th>Schadensart</th>
+              <th>Selbstbeteiligung</th>
+              <th>Bemerkung</th>
+            </tr>
+            <tr>
+              <td>Sonstiger Schaden</td>
+              <td>99€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Displayschaden</td>
+              <td>29€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Rückglasschäden</td>
+              <td>29€</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Display- und Rückglasschäden</td>
+              <td>58€</td>
+              <td></td>
             </tr>
           </table>
         </div>
@@ -3713,13 +3958,13 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>359€</td>
+      <td>Nicht mehr Verfügbar</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>Nicht mehr Verfügbar</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -3757,13 +4002,13 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>359€</td>
+      <td>349€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -3801,13 +4046,13 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>359€</td>
+      <td>349€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -3845,19 +4090,19 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi</td>
-      <td>469€</td>
+      <td>399€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi + Cellular</td>
-      <td>509€</td>
+      <td>465€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -3939,20 +4184,20 @@ Wenn das iPhone 12 oder iPhone 12 Pro eines Kunden beim Tätigen oder Empfangen 
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>495€</td>
+      <td>435€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
         </table>
         <h1>Austausch- und Reparaturerweiterungsprogramme</h1>
-							<p><a href="https://support.apple.com/de-de/ipad-air-3rd-gen-program-for-blank-screen-issue">Serviceprogramm bei leerem Bildschirm</a> - OP2298<br>
-							<small>Apple hat festgestellt, dass das Display einiger weniger iPad Air (3. Generation)-Geräte unter bestimmten Umständen dauerhaft ausfallen kann. Der Bildschirm kann dabei ein letztes Mal flackern oder aufblitzen und wird dann schwarz.
+              <p><a href="https://support.apple.com/de-de/ipad-air-3rd-gen-program-for-blank-screen-issue">Serviceprogramm bei leerem Bildschirm</a> - OP2298<br>
+              <small>Apple hat festgestellt, dass das Display einiger weniger iPad Air (3. Generation)-Geräte unter bestimmten Umständen dauerhaft ausfallen kann. Der Bildschirm kann dabei ein letztes Mal flackern oder aufblitzen und wird dann schwarz.
 
 Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt. Apple oder autorisierte Apple Service Provider leisten kostenlos Service für qualifizierte Geräte.</small></p>
         <h1>Apple Care+ Serviceleistungen</h1>
@@ -3988,13 +4233,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>559€</td>
+      <td>485€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4032,19 +4277,19 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi</td>
-      <td>559€</td>
+      <td>485€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi + Cellular </td>
-      <td>629€</td>
+      <td>539€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4059,6 +4304,106 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
           <tr>
             <td>Unabsichtliche Beschädigung</td>
             <td>49€</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="device" onclick="showTable('ipadair6,11')">
+        <div class="center">
+      <img src="/Bilder/ipadair6,11.png" alt="iPad Air 6,11" width="200" height="200">
+      <p><b>iPad Air 6 M2 11"</b></p>
+    </div>
+        <div class="table center" id="ipadair6,11">
+          <h1>iPad Air M2 11"</h1>
+          <table>
+          <tr>
+      <th>Service</th>
+      <th>Preis</th>
+      <th>Dauer</th>
+      <th>Bemerkung</th>
+
+    </tr>
+    <tr>
+      <td>Komplettaustausch nur WiFi</td>
+      <td>TBA</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+    <tr>
+      <td>Komplettaustausch nur WiFi + Cellular </td>
+      <td>TBA</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+    <tr>
+      <td>Batterieservice</td>
+      <td>TBA</td>
+      <td>3 - 4 Werktage</td>
+      <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
+    </tr>
+        </table>
+        <h1>Apple Care+ Serviceleistungen</h1>
+        <table>
+          <tr>
+            <th>Schadensart</th>
+            <th>Selbstbeteiligung</th>
+            <th>Bemerkung</th>
+          </tr>
+          <tr>
+            <td>Unabsichtliche Beschädigung</td>
+            <td>99€</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+     <div class="device" onclick="showTable('ipadair6,13')">
+        <div class="center">
+      <img src="/Bilder/ipadair6,13.png" alt="iPad Air 6,13" width="200" height="200">
+      <p><b>iPad Air 6 M2 13"</b></p>
+    </div>
+        <div class="table center" id="ipadair6,13">
+          <h1>iPad Air M2 13"</h1>
+          <table>
+          <tr>
+      <th>Service</th>
+      <th>Preis</th>
+      <th>Dauer</th>
+      <th>Bemerkung</th>
+
+    </tr>
+    <tr>
+      <td>Komplettaustausch nur WiFi</td>
+      <td>TBA</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+    <tr>
+      <td>Komplettaustausch nur WiFi + Cellular </td>
+      <td>TBA</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+    <tr>
+      <td>Batterieservice</td>
+      <td>TBA</td>
+      <td>3 - 4 Werktage</td>
+      <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
+    </tr>
+        </table>
+        <h1>Apple Care+ Serviceleistungen</h1>
+        <table>
+          <tr>
+            <th>Schadensart</th>
+            <th>Selbstbeteiligung</th>
+            <th>Bemerkung</th>
+          </tr>
+          <tr>
+            <td>Unabsichtliche Beschädigung</td>
+            <td>99€</td>
             <td></td>
           </tr>
         </table>
@@ -4082,13 +4427,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>329€</td>
+      <td>295€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>135€</td>
+      <td>105€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4126,13 +4471,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>329€</td>
+      <td>295€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>135€</td>
+      <td>109€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4170,13 +4515,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>329€</td>
+      <td>295€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>135€</td>
+      <td>109€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4214,13 +4559,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>329€</td>
+      <td>295€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>135€</td>
+      <td>109€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4258,13 +4603,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>329€</td>
+      <td>295€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>135€</td>
+      <td>109€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4302,19 +4647,19 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi</td>
-      <td>405€</td>
+      <td>369€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi + Cellular </td>
-      <td>475€</td>
+      <td>425€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4396,13 +4741,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>575€</td>
+      <td>525€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4440,13 +4785,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>649€</td>
+      <td>569€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4484,13 +4829,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>649€</td>
+      <td>569€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4527,14 +4872,21 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
 
     </tr>
     <tr>
-      <td>Komplettaustausch</td>
-      <td>709€</td>
+      <td>Komplettaustausch nur WiFi</td>
+      <td>629€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
+<tr>
+      <td>Komplettaustausch nur WiFi + Cellular </td>
+      <td>679€</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+
     <tr>
       <td>Batterieservice</td>
-      <td>239€</td>
+      <td>249€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4572,19 +4924,25 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi</td>
-      <td>709€</td>
+      <td>629€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi + Cellular </td>
-      <td>759€</td>
+      <td>679€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
-      <td>Batterieservice</td>
-      <td>159€</td>
+      <td>Batterieservice nur WiFi</td>
+      <td>149€</td>
+      <td>3 - 4 Werktage</td>
+      <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
+    </tr>
+    tr>
+      <td>Batterieservice nur WiFi + Cellular</td>
+      <td>189€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4599,6 +4957,56 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
           <tr>
             <td>Unabsichtliche Beschädigung</td>
             <td>49€</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="device" onclick="showTable('ipadpro11,5')">
+      <div class="center">
+      <img src="/Bilder/ipadpro11,5.png" alt="iPad Pro 11,5" width="200" height="200">
+      <p><b>iPad Pro 11" M4</b></p>
+    </div>
+        <div class="table center" id="ipadpro11,5">
+          <h1>iPad Pro 11" M4</h1>
+          <table>
+          <tr>
+      <th>Service</th>
+      <th>Preis</th>
+      <th>Dauer</th>
+      <th>Bemerkung</th>
+
+    </tr>
+    <tr>
+      <td>Komplettaustausch nur WiFi</td>
+      <td>959€</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+    <tr>
+      <td>Komplettaustausch nur WiFi + Cellular </td>
+      <td>1019€</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+    <tr>
+      <td>Batterieservice</td>
+      <td>215€</td>
+      <td>3 - 4 Werktage</td>
+      <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
+    </tr>
+        </table>
+        <h1>Apple Care+ Serviceleistungen</h1>
+        <table>
+          <tr>
+            <th>Schadensart</th>
+            <th>Selbstbeteiligung</th>
+            <th>Bemerkung</th>
+          </tr>
+          <tr>
+            <td>Unabsichtliche Beschädigung</td>
+            <td>99€</td>
             <td></td>
           </tr>
         </table>
@@ -4622,13 +5030,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>759€</td>
+      <td>739€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4666,13 +5074,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>819€</td>
+      <td>739€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4710,14 +5118,14 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch</td>
-      <td>819€</td>
+      <td>739€</td>
       <td>3 - 4 Werktage</td>
       <td></td>
     </tr>
 
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>149€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4755,19 +5163,14 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi</td>
-      <td>949€</td>
+      <td>909€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
-    <tr>
-      <td>Komplettaustausch nur WiFi + Cellular </td>
-      <td>1019€</td>
-      <td>3 - 4 Werktage</td>
-      <td><b>Modell beachten!</b></td>
-    </tr>
+    
     <tr>
       <td>Batterieservice</td>
-      <td>159€</td>
+      <td>215€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4805,19 +5208,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
       <td>Komplettaustausch nur WiFi</td>
-      <td>949€</td>
-      <td>3 - 4 Werktage</td>
-      <td><b>Modell beachten!</b></td>
-    </tr>
-    <tr>
-      <td>Komplettaustausch nur WiFi + Cellular </td>
-      <td>1019€</td>
+      <td>909€</td>
       <td>3 - 4 Werktage</td>
       <td><b>Modell beachten!</b></td>
     </tr>
     <tr>
       <td>Batterieservice</td>
-      <td>229€</td>
+      <td>215€</td>
       <td>3 - 4 Werktage</td>
       <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
     </tr>
@@ -4832,6 +5229,56 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
           <tr>
             <td>Unabsichtliche Beschädigung</td>
             <td>49€</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="device" onclick="showTable('ipadpro12,7')">
+      <div class="center">
+      <img src="/Bilder/ipadpro12,7.png" alt="iPad Pro 12,7" width="200" height="200">
+      <p><b>iPad Pro 13" M4</b></p>
+    </div>
+        <div class="table center" id="ipadpro12,7">
+          <h1>iPad Pro 13" M4</h1>
+          <table>
+          <tr>
+      <th>Service</th>
+      <th>Preis</th>
+      <th>Dauer</th>
+      <th>Bemerkung</th>
+
+    </tr>
+    <tr>
+      <td>Komplettaustausch nur WiFi</td>
+      <td>1129€</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+    <tr>
+      <td>Komplettaustausch nur WiFi + Cellular </td>
+      <td>1189€</td>
+      <td>3 - 4 Werktage</td>
+      <td><b>Modell beachten!</b></td>
+    </tr>
+    <tr>
+      <td>Batterieservice</td>
+      <td>235€</td>
+      <td>3 - 4 Werktage</td>
+      <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
+    </tr>
+        </table>
+        <h1>Apple Care+ Serviceleistungen</h1>
+        <table>
+          <tr>
+            <th>Schadensart</th>
+            <th>Selbstbeteiligung</th>
+            <th>Bemerkung</th>
+          </tr>
+          <tr>
+            <td>Unabsichtliche Beschädigung</td>
+            <td>99€</td>
             <td></td>
           </tr>
         </table>
@@ -4924,7 +5371,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
         <tr>
         <td>Komplettaustausch nur GPS + Cellular</td>
-        <td>459€</td>
+        <td>439€</td>
         <td>6 Werktage</td>
         <td><b>Modell beachten!</td>
       </tr>
@@ -4936,7 +5383,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -4984,7 +5431,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
         <tr>
         <td>Komplettaustausch nur GPS + Cellular</td>
-        <td>459€</td>
+        <td>439€€</td>
         <td>6 Werktage</td>
         <td><b>Modell beachten!</td>
       </tr>
@@ -5002,7 +5449,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
   </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -5050,7 +5497,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
         <tr>
         <td>Komplettaustausch nur GPS + Cellular</td>
-        <td>459€</td>
+        <td>439€</td>
         <td>6 Werktage</td>
         <td><b>Modell beachten!</td>
       </tr>
@@ -5068,14 +5515,14 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
   </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
       </table>
       <h1>Austausch- und Reparaturerweiterungsprogramme</h1>
       <p><a href="http://support.apple.com/apple-watch-series6-service-program-for-blank-screen-issue">Serviceprogramm für Apple Watch Series 6 mit leerem Bildschirm</a> - OP2629<br>
-							<small>Apple hat festgestellt, dass sehr wenige 40-mm-Modelle der Apple Watch Series 6 einen dauerhaft leeren Bildschirm aufweisen können. Die betroffenen Geräte wurden zwischen April 2021 und September 2021 hergestellt. <strong>Seriennummer auf obiger Seite prüfen! Gilt nur für Uhren die sich einschalten lassen, bei denen aber das Display schwarz bleibt.</strong></small></p>
+              <small>Apple hat festgestellt, dass sehr wenige 40-mm-Modelle der Apple Watch Series 6 einen dauerhaft leeren Bildschirm aufweisen können. Die betroffenen Geräte wurden zwischen April 2021 und September 2021 hergestellt. <strong>Seriennummer auf obiger Seite prüfen! Gilt nur für Uhren die sich einschalten lassen, bei denen aber das Display schwarz bleibt.</strong></small></p>
       <h1>Apple Care+ Serviceleistungen</h1>
       <table>
         <tr>
@@ -5119,7 +5566,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
         <tr>
         <td>Komplettaustausch nur GPS + Cellular</td>
-        <td>459€</td>
+        <td>439€</td>
         <td>6 Werktage</td>
         <td><b>Modell beachten!</td>
       </tr>
@@ -5137,7 +5584,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
   </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -5185,7 +5632,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
         <tr>
         <td>Komplettaustausch nur GPS + Cellular</td>
-        <td>459€</td>
+        <td>439€</td>
         <td>6 Werktage</td>
         <td><b>Modell beachten!</td>
       </tr>
@@ -5197,7 +5644,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -5223,13 +5670,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
     </div>
 </div>
 
-<div class="device" onclick="showTable('watchultra')">
-  <div class="center">
-    <img src="/Bilder/watchultra.png" alt="Apple Watch Ultra" width="200" height="200">
-    <p><b>Apple Watch Ultra</b></p>
+<div class="device" onclick="showTable('watchs9')">
+    <div class="center">
+    <img src="/Bilder/watch9.png" alt="Apple Watch Serie 9" width="200" height="200">
+    <p><b>Apple Watch Serie 9</b></p>
   </div>
-      <div class="table center" id="watchultra">
-        <h1>Apple Watch Ultra</h1>
+      <div class="table center" id="watchs9">
+        <h1>Apple Watch Serie 9</h1>
         <table>
         <tr>
           <th>Service</th>
@@ -5238,14 +5685,26 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
           <th>Bemerkung</th>
         </tr>
         <tr>
-          <td>Komplettaustausch</td>
-          <td>639€</td>
+          <td>Komplettaustausch nur GPS</td>
+          <td>379€</td>
           <td>6 Werktage</td>
-          <td><b></td>
+          <td><b>Modell beachten!</td>
         </tr>
+        <tr>
+        <td>Komplettaustausch nur GPS + Cellular</td>
+        <td>459€</td>
+        <td>6 Werktage</td>
+        <td><b>Modell beachten!</td>
+      </tr>
+      <tr>
+      <td>Komplettaustausch Edelstahl</td>
+      <td>499€</td>
+      <td>6 Werktage</td>
+      <td><b>Modell beachten!</td>
+    </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -5269,7 +5728,67 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
       </table>
     </div>
+</div>
+
+<div class="device" onclick="showTable('watchs10')">
+    <div class="center">
+    <img src="/Bilder/watch10.png" alt="Apple Watch Serie 10" width="200" height="200">
+    <p><b>Apple Watch Serie 10</b></p>
   </div>
+      <div class="table center" id="watchs10">
+        <h1>Apple Watch Serie 10</h1>
+        <table>
+        <tr>
+          <th>Service</th>
+          <th>Preis</th>
+          <th>Dauer</th>
+          <th>Bemerkung</th>
+        </tr>
+        <tr>
+          <td>Komplettaustausch nur GPS</td>
+          <td>429€</td>
+          <td>6 Werktage</td>
+          <td><b>Modell beachten!</td>
+        </tr>
+        <tr>
+        <td>Komplettaustausch nur GPS + Cellular</td>
+        <td>499€</td>
+        <td>6 Werktage</td>
+        <td><b>Modell beachten!</td>
+      </tr>
+      <tr>
+      <td>Komplettaustausch Titan</td>
+      <td>549€</td>
+      <td>6 Werktage</td>
+      <td><b>Modell beachten!</td>
+    </tr>
+    <tr>
+    <td>Batterietausch</td>
+    <td>119€</td>
+    <td>6 Werktage</td>
+    <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
+  </tr>
+      </table>
+      <h1>Apple Care+ Serviceleistungen</h1>
+      <table>
+        <tr>
+          <th>Modell</th>
+          <th>Selbstbeteiligung</th>
+          <th>Bemerkung</th>
+        </tr>
+        <tr>
+          <td>Apple Watch, Apple Nike+</td>
+          <td>65€</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Apple Watch Hermès, Apple Watch Edition</td>
+          <td>75€</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+</div>
 
   <div class="device" onclick="showTable('watchse')">
       <div class="center">
@@ -5287,19 +5806,19 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
         <tr>
           <td>Komplettaustausch nur WiFi</td>
-          <td>285€</td>
+          <td>259€</td>
           <td>6 Werktage</td>
           <td><b>Modell beachten!</td>
         </tr>
         <tr>
           <td>Komplettaustausch nur WiFi +  Cellular</td>
-          <td>329€</td>
+          <td>309€</td>
           <td>6 Werktage</td>
           <td><b>Modell beachten!</td>
         </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -5347,13 +5866,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
         <tr>
           <td>Komplettaustausch nur WiFi +  Cellular</td>
-          <td>299€</td>
+          <td>309€</td>
           <td>6 Werktage</td>
           <td><b>Modell beachten!</td>
         </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -5378,13 +5897,14 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
       </table>
     </div>
   </div>
-  <div class="device" onclick="showTable('watchs9')">
-    <div class="center">
-    <img src="/Bilder/watch9.png" alt="Apple Watch Serie 9" width="200" height="200">
-    <p><b>Apple Watch Serie 9</b></p>
+
+  <div class="device" onclick="showTable('watchultra')">
+  <div class="center">
+    <img src="/Bilder/watchultra.png" alt="Apple Watch Ultra" width="200" height="200">
+    <p><b>Apple Watch Ultra</b></p>
   </div>
-      <div class="table center" id="watchs9">
-        <h1>Apple Watch Serie 9</h1>
+      <div class="table center" id="watchultra">
+        <h1>Apple Watch Ultra</h1>
         <table>
         <tr>
           <th>Service</th>
@@ -5393,26 +5913,14 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
           <th>Bemerkung</th>
         </tr>
         <tr>
-          <td>Komplettaustausch nur GPS</td>
-          <td>379€</td>
+          <td>Komplettaustausch</td>
+          <td>639€</td>
           <td>6 Werktage</td>
-          <td><b>Modell beachten!</td>
+          <td><b></td>
         </tr>
-        <tr>
-        <td>Komplettaustausch nur GPS + Cellular</td>
-        <td>459€</td>
-        <td>6 Werktage</td>
-        <td><b>Modell beachten!</td>
-      </tr>
-      <tr>
-      <td>Komplettaustausch Edelstahl</td>
-      <td>499€</td>
-      <td>6 Werktage</td>
-      <td><b>Modell beachten!</td>
-    </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -5436,7 +5944,8 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
       </table>
     </div>
-</div>
+  </div>
+  
 
 <div class="device" onclick="showTable('watchultra2')">
   <div class="center">
@@ -5460,7 +5969,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         </tr>
     <tr>
     <td>Batterietausch</td>
-    <td>149€</td>
+    <td>119€</td>
     <td>6 Werktage</td>
     <td>Nur möglich wenn sich das Gerät einschalten lässt und der MRI einen Batterieproblem feststellt.</td>
   </tr>
@@ -5523,6 +6032,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
         <td>3 - 4 Werktage</td>
         <td></td>
       </tr>
+      
 
   </table>
 </p>
@@ -5645,7 +6155,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
               <mark><b>Abgedeckt für 4 Jahre ab dem Kauf.</b></mark><br><br>
 
               <a href="https://gsx2.apple.com/product-details/FVFCM0W8MLVD?tile=resources&tab=articles&articleId=OP1564">Mac-Notebooks mit Retina-Display: Probleme mit der Antireflex-Beschichtung erkennen</a> - OP1564<br>
-              							<small>An MacBook- und MacBook Pro-Modellen mit Retina-Display kann sich unter bestimmten Umständen die Antireflex-Displaybeschichtung abscheuern oder ablösen.</small><br><br><mark><b>Abgedeckt für 4 Jahre ab dem Kauf.</b></mark>
+                            <small>An MacBook- und MacBook Pro-Modellen mit Retina-Display kann sich unter bestimmten Umständen die Antireflex-Displaybeschichtung abscheuern oder ablösen.</small><br><br><mark><b>Abgedeckt für 4 Jahre ab dem Kauf.</b></mark>
 
     <h1>Apple Care+ Serviceleistungen</h1>
     <table>
@@ -5717,7 +6227,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
               <mark><b>Abgedeckt für 4 Jahre ab dem Kauf.</b></mark><br><br>
 
               <a href="https://gsx2.apple.com/product-details/FVFCM0W8MLVD?tile=resources&tab=articles&articleId=OP1564">Mac-Notebooks mit Retina-Display: Probleme mit der Antireflex-Beschichtung erkennen</a> - OP1564<br>
-              							<small>An MacBook- und MacBook Pro-Modellen mit Retina-Display kann sich unter bestimmten Umständen die Antireflex-Displaybeschichtung abscheuern oder ablösen.</small><br><br><mark><b>Abgedeckt für 4 Jahre ab dem Kauf.</b></mark>
+                            <small>An MacBook- und MacBook Pro-Modellen mit Retina-Display kann sich unter bestimmten Umständen die Antireflex-Displaybeschichtung abscheuern oder ablösen.</small><br><br><mark><b>Abgedeckt für 4 Jahre ab dem Kauf.</b></mark>
 
     <h1>Apple Care+ Serviceleistungen</h1>
     <table>
@@ -5838,9 +6348,9 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
   </tr>
   <tr>
   <td>Batterie</td>
-  <td>199€</td>
+  <td>249€</td>
   <td>6 Werktage</td>
-  <td>Die Batterie ist ein einzelnes Bauteil und kann auf Kundenwunsch getauscht werden. Der MRI muss kein Batterieproblem feststellen. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
+  <td>Der Preis gilt nur wenn Service empfohlen angezeigt wird. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
   </tr>
       </table>
       <h1>Apple Care+ Serviceleistungen</h1>
@@ -5898,7 +6408,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
   </tr>
   <tr>
   <td>Batterie</td>
-  <td>199€</td>
+  <td>249€</td>
   <td>6 Werktage</td>
   <td>Die Batterie ist ein einzelnes Bauteil und kann auf Kundenwunsch getauscht werden. Der MRI muss kein Batterieproblem feststellen. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
   </tr>
@@ -5952,26 +6462,26 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
             <th>Bemerkung</th>
           </tr>
           <tr>
-            <td>Displaytausch</td>
-            <td>599€</td>
+            <td>Display</td>
+            <td>549€</td>
             <td>6 Werktage</td>
             <td></td>
           </tr>
       <tr>
       <td>Hauptplatine</td>
-      <td>699€</td>
+      <td>649€</td>
       <td>6 Werktage</td>
-      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 699€ bereits enthalten).</td>
+      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 649€ bereits enthalten).</td>
     </tr>
     <tr>
     <td>Top Case</td>
-    <td>489€</td>
+    <td>479€</td>
     <td>6 Werktage</td>
     <td>Weder Batterie noch Trackpad sind bei diesem Modell Teil des Top Cases.</td>
     </tr>
     <tr>
     <td>Batterie</td>
-    <td>199€</td>
+    <td>249€</td>
     <td>6 Werktage</td>
     <td>Die Batterie ist ein einzelnes Bauteil und kann auf Kundenwunsch getauscht werden. Der MRI muss kein Batterieproblem feststellen. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
     </tr>
@@ -6025,26 +6535,26 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
             <th>Bemerkung</th>
           </tr>
           <tr>
-            <td>Displaytausch</td>
-            <td>599€</td>
+            <td>Display</td>
+            <td>549€</td>
             <td>6 Werktage</td>
             <td></td>
           </tr>
       <tr>
       <td>Hauptplatine</td>
-      <td>699€</td>
+      <td>649€</td>
       <td>6 Werktage</td>
-      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 699€ bereits enthalten).</td>
+      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 649€ bereits enthalten).</td>
     </tr>
     <tr>
     <td>Top Case</td>
-    <td>489€</td>
+    <td>479€</td>
     <td>6 Werktage</td>
     <td>Weder Batterie noch Trackpad sind bei diesem Modell Teil des Top Cases.</td>
     </tr>
     <tr>
     <td>Batterie</td>
-    <td>199€</td>
+    <td>249€</td>
     <td>6 Werktage</td>
     <td>Die Batterie ist ein einzelnes Bauteil und kann auf Kundenwunsch getauscht werden. Der MRI muss kein Batterieproblem feststellen. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
     </tr>
@@ -6090,22 +6600,27 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
             <th>Dauer</th>
             <th>Bemerkung</th>
           </tr>
-
+          <tr>
+      <td>Display</td>
+      <td>699€</td>
+      <td>6 Werktage</td>
+      <td></td>
+    </tr>
       <tr>
       <td>Hauptplatine</td>
-      <td></td>
+      <td>799€</td>
       <td>6 Werktage</td>
-      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 699€ bereits enthalten).</td>
+      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 799€ bereits enthalten).</td>
     </tr>
     <tr>
     <td>Top Case</td>
-    <td></td>
+    <td>649€</td>
     <td>6 Werktage</td>
     <td>Weder Batterie noch Trackpad sind bei diesem Modell Teil des Top Cases.</td>
     </tr>
     <tr>
     <td>Batterie</td>
-    <td>199€</td>
+    <td>249€</td>
     <td>6 Werktage</td>
     <td>Die Batterie ist ein einzelnes Bauteil und kann auf Kundenwunsch getauscht werden. Der MRI muss kein Batterieproblem feststellen. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
     </tr>
@@ -6150,9 +6665,27 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
               <th>Dauer</th>
               <th>Bemerkung</th>
             </tr>
+            <tr>
+      <td>Display</td>
+      <td>799€</td>
+      <td>6 Werktage</td>
+      <td></td>
+    </tr>
+      <tr>
+      <td>Hauptplatine</td>
+      <td>839€</td>
+      <td>6 Werktage</td>
+      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 839€ bereits enthalten).</td>
+    </tr>
+    <tr>
+    <td>Top Case</td>
+    <td>749€</td>
+    <td>6 Werktage</td>
+    <td>Weder Batterie noch Trackpad sind bei diesem Modell Teil des Top Cases.</td>
+    </tr>
       <tr>
       <td>Batterie</td>
-      <td>199€</td>
+      <td>289€</td>
       <td>6 Werktage</td>
       <td>Die Batterie ist ein einzelnes Bauteil und kann auf Kundenwunsch getauscht werden. Der MRI muss kein Batterieproblem feststellen. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
       </tr>
@@ -6201,22 +6734,22 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
           </tr>
 
       <tr>
-      <td>Hauptplatine</td>
-      <td></td>
+      <td>Display</td>
+      <td>699€</td>
       <td>6 Werktage</td>
-      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 699€ bereits enthalten).</td>
+      <td></td>
+    </tr>
+      <tr>
+      <td>Hauptplatine</td>
+      <td>799€</td>
+      <td>6 Werktage</td>
+      <td>Enthält die Festplatte des Gerätes. Datensicherung ist Pflicht! Touch ID muss beim Austausch ebenfalls getauscht werden (ist im Preis von 799€ bereits enthalten).</td>
     </tr>
     <tr>
     <td>Top Case</td>
-    <td></td>
+    <td>649€</td>
     <td>6 Werktage</td>
     <td>Weder Batterie noch Trackpad sind bei diesem Modell Teil des Top Cases.</td>
-    </tr>
-    <tr>
-    <td>Batterie</td>
-    <td>199€</td>
-    <td>6 Werktage</td>
-    <td>Die Batterie ist ein einzelnes Bauteil und kann auf Kundenwunsch getauscht werden. Der MRI muss kein Batterieproblem feststellen. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
     </tr>
             <tr>
   <td>USB-C Anschlüsse</td>
@@ -6262,7 +6795,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
             </tr>
       <tr>
       <td>Batterie</td>
-      <td>199€</td>
+      <td>289€</td>
       <td>6 Werktage</td>
       <td>Die Batterie ist ein einzelnes Bauteil und kann auf Kundenwunsch getauscht werden. Der MRI muss kein Batterieproblem feststellen. Batterien werden auf dem Landweg versendet und benötigen daher etwas länger.</td>
       </tr>
@@ -6411,7 +6944,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
               </tr>
               <tr>
                 <td>Batterietausch</td>
-                <td>319€</td>
+                <td>Auf Anfrage</td>
                 <td>3 - 4 Werktage</td>
                 <td></td>
               </tr>
@@ -6543,7 +7076,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                   </tr>
                   <tr>
                     <td>Batterietausch</td>
-                    <td>319€</td>
+                    <td>Auf Anfrage</td>
                     <td>3 - 4 Werktage</td>
                     <td></td>
                   </tr>
@@ -6675,7 +7208,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                       </tr>
                       <tr>
                         <td>Batterietausch</td>
-                        <td>319€</td>
+                        <td>Auf Anfrage</td>
                         <td>3 - 4 Werktage</td>
                         <td></td>
                       </tr>
@@ -6741,7 +7274,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                         </tr>
                         <tr>
                           <td>Batterietausch</td>
-                          <td>319€</td>
+                          <td>Auf Anfrage</td>
                           <td>3 - 4 Werktage</td>
                           <td></td>
                         </tr>
@@ -7399,6 +7932,24 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                             <th>Bemerkung</th>
                                           </tr>
                                           <tr>
+                                            <td>Display</td>
+                                            <td>749€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Logic Board</td>
+                                            <td>899€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Top-Case</td>
+                                            <td>849€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
                                             <td>Basisinstallation/Aktualisierung</td>
                                             <td>39€</td>
                                             <td>3 - 4 Werktage</td>
@@ -7478,6 +8029,24 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                             <th>Bemerkung</th>
                                           </tr>
                                           <tr>
+                                            <td>Display</td>
+                                            <td>749€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Logic Board</td>
+                                            <td>899€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Top-Case</td>
+                                            <td>849€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
                                             <td>Basisinstallation/Aktualisierung</td>
                                             <td>39€</td>
                                             <td>3 - 4 Werktage</td>
@@ -7549,6 +8118,24 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                               <th>Dauer</th>
                                               <th>Bemerkung</th>
                                             </tr>
+                                            <tr>
+                                            <td>Display</td>
+                                            <td>899€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Logic Board</td>
+                                            <td>899€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Top-Case</td>
+                                            <td>949€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
                                             <tr>
                                               <td>Basisinstallation/Aktualisierung</td>
                                               <td>39€</td>
@@ -7622,12 +8209,24 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                 <th>Dauer</th>
                                                 <th>Bemerkung</th>
                                               </tr>
-                                                <tr>
-                                                <td>Displaytausch</td>
-                                                <td>950€</td>
-                                                <td>3 - 4 Werktage</td>
-                                                <td></td>
-                                              </tr>
+                                              <tr>
+                                            <td>Display</td>
+                                            <td>899€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Logic Board</td>
+                                            <td>999€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                          <tr>
+                                            <td>Top-Case</td>
+                                            <td>949€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
                                               <tr>
                                                 <td>Basisinstallation/Aktualisierung</td>
                                                 <td>39€</td>
@@ -7702,6 +8301,24 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                   <th>Bemerkung</th>
                                                 </tr>
                                                 <tr>
+                                            <td>Display</td>
+                                            <td>749€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                              <tr>
+                                            <td>Logic Board</td>
+                                            <td>899€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                              <tr>
+                                            <td>Top-Case</td>
+                                            <td>849€</td>
+                                            <td>3 - 4 Werktage</td>
+                                            <td></td>
+                                          </tr>
+                                                <tr>
                                                   <td>Basisinstallation/Aktualisierung</td>
                                                   <td>39€</td>
                                                   <td>3 - 4 Werktage</td>
@@ -7759,72 +8376,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                             </div>
                                             </div>
 
-                                            <div class="device" onclick="showTable('macbookpro132020,2')">
-                                              <div class="center">
-                                            <img src="/Bilder/pro132020,2.png" alt="macbookpro132020,2" width="200" height="200">
-                                            <p><b>MacBook Pro 13" 2020<br> 4TB Ports</b></p>
-                                          </div>
-                                              <div class="table center" id="macbookpro132020,2">
-                                                <h1>MacBook Pro 13" 2020 4TB Ports</h1>
-                                                <table>
-                                                <tr>
-                                                  <th>Service</th>
-                                                  <th>Preis</th>
-                                                  <th>Dauer</th>
-                                                  <th>Bemerkung</th>
-                                                </tr>
-                                                <tr>
-                                                  <td>Basisinstallation/Aktualisierung</td>
-                                                  <td>39€</td>
-                                                  <td>3 - 4 Werktage</td>
-                                                  <td></td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Migration Mac-to-Mac <b>(Bei uns gekauft)</b></td>
-                                                  <td>39€</td>
-                                                  <td>3 - 4 Werktage</td>
-                                                  <td></td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Migration Mac-to-Mac <b>(Nicht bei uns gekauft)</b></td>
-                                                  <td>79€</td>
-                                                  <td>3 - 4 Werktage</td>
-                                                  <td></td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Datensicherung</td>
-                                                  <td>39€</td>
-                                                  <td>3 - 4 Werktage</td>
-                                                  <td></td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Batterietausch</td>
-                                                  <td>319€</td>
-                                                  <td>6 Werktage</td>
-                                                  <td><mark>Das TopCase wird nicht mit getauscht. Der Austausch findet nicht mehr hier statt, bitte weißt die Kunden auf eine Datensicherung hin.</mark></td>
-                                                </tr>
-                                              </table>
-                                              <h1>Apple Care+ Serviceleistungen</h1>
-                                              <table>
-                                                <tr>
-                                                  <th>Schadensart</th>
-                                                  <th>Selbstbeteiligung</th>
-                                                  <th>Bemerkung</th>
-                                                </tr>
-                                                <tr>
-                                                  <td>Nur Bildschirm oder externes Gehäuse</td>
-                                                  <td>99€</td>
-                                                  <td>Für Schäden am Display, Top Case oder der Bodenplatte.</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>Andere Schäden</td>
-                                                  <td>259€</td>
-                                                  <td>Für Schäden im inneren des Gerätes, wie sie z.B. durch das Eindringen von Flüssigkeit entstehen.</td>
-                                                </tr>
-                                              </table>
-                                            </div>
-                                            </div>
-
+                                            
                                             <div class="device" onclick="showTable('macbookpro132020m1')">
                                               <div class="center">
                                               <img src="/Bilder/pro132020m1.png" alt="macbookpro132020m1" width="200" height="200">
@@ -7840,8 +8392,20 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                     <th>Bemerkung</th>
                                                   </tr>
                                                     <tr>
-                                                    <td>Displaytausch</td>
-                                                    <td>725€</td>
+                                                    <td>Display</td>
+                                                    <td>749€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                      <tr>
+                                                    <td>Logic Board</td>
+                                                    <td>899€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Top-Case</td>
+                                                    <td>849€</td>
                                                     <td>3 - 4 Werktage</td>
                                                     <td></td>
                                                   </tr>
@@ -7912,11 +8476,23 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                       <th>Bemerkung</th>
                                                     </tr>
                                                       <tr>
-                                                      <td>Displaytausch</td>
-                                                      <td>950€</td>
+                                                      <td>Display</td>
+                                                      <td>999€</td>
                                                       <td>3 - 4 Werktage</td>
                                                       <td></td>
                                                     </tr>
+                                                    <tr>
+                                                    <td>Logic Board</td>
+                                                    <td>899€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Top-Case</td>
+                                                    <td>849€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
                                                     <tr>
                                                       <td>Basisinstallation/Aktualisierung</td>
                                                       <td>39€</td>
@@ -7984,6 +8560,24 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                         <th>Bemerkung</th>
                                                       </tr>
                                                       <tr>
+                                                    <td>Display</td>
+                                                    <td>1099€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Logic Board</td>
+                                                    <td>999€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Top-Case</td>
+                                                    <td>949€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                      <tr>
                                                         <td>Basisinstallation/Aktualisierung</td>
                                                         <td>39€</td>
                                                         <td>3 - 4 Werktage</td>
@@ -8050,10 +8644,23 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                           <th>Bemerkung</th>
                                                         </tr>
                                                           <tr>
-                                                          <td>Displaytausch</td>
-                                                          <td>725€</td>
-                                                          <td>3 - 4 Werktage</td>
-                                                          <td></td>
+                                                    <td>Display</td>
+                                                    <td>749€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Logic Board</td>
+                                                    <td>899€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Top-Case</td>
+                                                    <td>849€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
                                                         <tr>
                                                           <td>Basisinstallation/Aktualisierung</td>
                                                           <td>39€</td>
@@ -8121,11 +8728,23 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                             <th>Bemerkung</th>
                                                           </tr>
                                                             <tr>
-                                                      <td>Displaytausch</td>
-                                                      <td>950€</td>
+                                                      <td>Display</td>
+                                                      <td>949€</td>
                                                       <td>3 - 4 Werktage</td>
                                                       <td></td>
                                                     </tr>
+                                                      <tr>
+                                                    <td>Logic Board</td>
+                                                    <td>899€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                        <tr>
+                                                    <td>Top-Case</td>
+                                                    <td>849€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
                                                           <tr>
                                                             <td>Basisinstallation/Aktualisierung</td>
                                                             <td>39€</td>
@@ -8178,71 +8797,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                       </div>
                                                       </div>
 
-                                                      <div class="device" onclick="showTable('macbookpro162022m2')">
-                                                          <div class="center">
-                                                        <img src="/Bilder/pro162022.png" alt="macbookpro162022m2" width="200" height="200">
-                                                        <p><b>MacBook Pro 16" 2022<br> M2</b></p>
-                                                      </div>
-                                                          <div class="table center" id="macbookpro162022m2">
-                                                            <h1>MacBook Pro 16" 2022 M2</h1>
-                                                            <table>
-                                                            <tr>
-                                                              <th>Service</th>
-                                                              <th>Preis</th>
-                                                              <th>Dauer</th>
-                                                              <th>Bemerkung</th>
-                                                            </tr>
-                                                            <tr>
-                                                              <td>Basisinstallation/Aktualisierung</td>
-                                                              <td>39€</td>
-                                                              <td>3 - 4 Werktage</td>
-                                                              <td></td>
-                                                            </tr>
-                                                            <tr>
-                                                              <td>Migration Mac-to-Mac <b>(Bei uns gekauft)</b></td>
-                                                              <td>39€</td>
-                                                              <td>3 - 4 Werktage</td>
-                                                              <td></td>
-                                                            </tr>
-                                                            <tr>
-                                                              <td>Migration Mac-to-Mac <b>(Nicht bei uns gekauft)</b></td>
-                                                              <td>79€</td>
-                                                              <td>3 - 4 Werktage</td>
-                                                              <td></td>
-                                                            </tr>
-                                                            <tr>
-                                                              <td>Datensicherung</td>
-                                                              <td>39€</td>
-                                                              <td>3 - 4 Werktage</td>
-                                                              <td></td>
-                                                            </tr>
-                                                            <tr>
-                                                              <td>Batterietausch</td>
-                                                              <td>319€</td>
-                                                              <td>6 Werktage</td>
-                                                              <td><mark>Das TopCase wird nicht mit getauscht. Der Austausch findet nicht mehr hier statt, bitte weißt die Kunden auf eine Datensicherung hin.</mark></td>
-                                                            </tr>
-                                                          </table>
-                                                          <h1>Apple Care+ Serviceleistungen</h1>
-                                                          <table>
-                                                            <tr>
-                                                              <th>Schadensart</th>
-                                                              <th>Selbstbeteiligung</th>
-                                                              <th>Bemerkung</th>
-                                                            </tr>
-                                                            <tr>
-                                                              <td>Nur Bildschirm oder externes Gehäuse</td>
-                                                              <td>99€</td>
-                                                              <td>Für Schäden am Display, Top Case oder der Bodenplatte.</td>
-                                                            </tr>
-                                                            <tr>
-                                                              <td>Andere Schäden</td>
-                                                              <td>259€</td>
-                                                              <td>Für Schäden im inneren des Gerätes, wie sie z.B. durch das Eindringen von Flüssigkeit entstehen.</td>
-                                                            </tr>
-                                                          </table>
-                                                        </div>
-                                                        </div>
+                                                      
                                                         <div class="device" onclick="showTable('macbookpro142023m3')">
                                                             <div class="center">
                                                           <img src="/Bilder/pro142023.png" alt="macbookpro142023m3" width="200" height="200">
@@ -8258,11 +8813,23 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                                 <th>Bemerkung</th>
                                                               </tr>
                                                                 <tr>
-                                                          <td>Displaytausch</td>
-                                                          <td>950€</td>
+                                                          <td>Display</td>
+                                                          <td>949€</td>
                                                           <td>3 - 4 Werktage</td>
                                                           <td></td>
                                                         </tr>
+                                                              <tr>
+                                                    <td>Logic Board</td>
+                                                    <td>899€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Top-Case</td>
+                                                    <td>849€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
                                                               <tr>
                                                                 <td>Basisinstallation/Aktualisierung</td>
                                                                 <td>39€</td>
@@ -8329,11 +8896,23 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                                   <th>Bemerkung</th>
                                                                 </tr>
                                                                   <tr>
-                                                            <td>Displaytausch</td>
-                                                            <td>950€</td>
+                                                            <td>Display</td>
+                                                            <td>949€</td>
                                                             <td>3 - 4 Werktage</td>
                                                             <td></td>
                                                           </tr>
+                                                          <tr>
+                                                    <td>Logic Board</td>
+                                                    <td>899€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
+                                                                  <tr>
+                                                    <td>Top-Case</td>
+                                                    <td>849€</td>
+                                                    <td>3 - 4 Werktage</td>
+                                                    <td></td>
+                                                  </tr>
                                                                 <tr>
                                                                   <td>Basisinstallation/Aktualisierung</td>
                                                                   <td>39€</td>
@@ -8388,7 +8967,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                             <div class="device" onclick="showTable('macbookpro162023m3')">
                                                                 <div class="center">
                                                               <img src="/Bilder/pro162023.png" alt="macbookpro162023m3" width="200" height="200">
-                                                              <p><b>MacBook Pro 16" 2023<br> M2</b></p>
+                                                              <p><b>MacBook Pro 16" 2023<br> M3</b></p>
                                                             </div>
                                                                 <div class="table center" id="macbookpro162023m3">
                                                                   <h1>MacBook Pro 16" 2023 M3</h1>
@@ -8398,6 +8977,24 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
                                                                     <th>Preis</th>
                                                                     <th>Dauer</th>
                                                                     <th>Bemerkung</th>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td>Display</td>
+                                                                    <td>1099€</td>
+                                                                    <td>3 - 4 Werktage</td>
+                                                                    <td></td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td>Logic Board</td>
+                                                                    <td>999€</td>
+                                                                    <td>3 - 4 Werktage</td>
+                                                                    <td></td>
+                                                                  </tr>
+                                                                  <tr>
+                                                                    <td>Top-Case</td>
+                                                                    <td>949€</td>
+                                                                    <td>3 - 4 Werktage</td>
+                                                                    <td></td>
                                                                   </tr>
                                                                   <tr>
                                                                     <td>Basisinstallation/Aktualisierung</td>
@@ -8456,7 +9053,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
 
         <div class="device" onclick="showTable('airpods1')">
       <div class="center">
-          <img src="/Bilder/airpods.png" alt="Airpods1" width="250" height="250">
+          <img src="/Bilder/airpods.png" alt="Airpods1" width="200" height="200">
           <p><b>AirPods 1st Gen.</b></p>
         </div>
             <div class="table center" id="airpods1">
@@ -8486,7 +9083,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
 
         <div class="device" onclick="showTable('airpods2')">
       <div class="center">
-          <img src="/Bilder/airpods2.png" alt="Airpods2" width="250" height="250">
+          <img src="/Bilder/airpods2.png" alt="Airpods2" width="200" height="200">
           <p><b>AirPods 2nd Gen.</b></p>
         </div>
             <div class="table center" id="airpods2">
@@ -8516,7 +9113,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
 
         <div class="device" onclick="showTable('airpods3')">
       <div class="center">
-          <img src="/Bilder/airpods3.png" alt="Airpods3" width="250" height="250">
+          <img src="/Bilder/airpods3.png" alt="Airpods3" width="200" height="200">
           <p><b>AirPods 3rd Gen.</b></p>
         </div>
             <div class="table center" id="airpods3">
@@ -8546,7 +9143,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
 
         <div class="device" onclick="showTable('airpodspro1')">
       <div class="center">
-          <img src="/Bilder/airpodspro.png" alt="Airpodspro1" width="250" height="250">
+          <img src="/Bilder/airpodspro.png" alt="Airpodspro1" width="200" height="200">
           <p><b>AirPods Pro 1st Gen.</b></p>
         </div>
             <div class="table center" id="airpodspro1">
@@ -8590,13 +9187,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
               </tr>
             </table>
             <p><a href="https://support.apple.com/de-de/airpods-pro-service-program-sound-issues">Serviceprogramm für AirPods Pro bei Tonproblemen</a> - OP2381<br>
-							<small>Apple hat festgestellt, dass bei einem kleinen Prozentsatz von AirPods Pro Tonprobleme auftreten können. <strong>Betroffene Geräte wurden vor Oktober 2020 hergestellt.</strong><br>Bei Geräten die neuer als Oktober 2020 sind, besteht die Möglichkeit eine Reparatur<br><br><h2><mark>3 Jahre ab Kauf.</h2></mark></small></p>
+              <small>Apple hat festgestellt, dass bei einem kleinen Prozentsatz von AirPods Pro Tonprobleme auftreten können. <strong>Betroffene Geräte wurden vor Oktober 2020 hergestellt.</strong><br>Bei Geräten die neuer als Oktober 2020 sind, besteht die Möglichkeit eine Reparatur<br><br><h2><mark>3 Jahre ab Kauf.</h2></mark></small></p>
           </div>
         </div>
 
         <div class="device" onclick="showTable('airpodspro2')">
       <div class="center">
-          <img src=/Bilder/airpodspro2.png alt="Airpodspro2" width="250" height="250">
+          <img src=/Bilder/airpodspro2.png alt="Airpodspro2" width="200" height="200">
           <p><b>AirPods Pro 2nd Gen.</b></p>
         </div>
             <div class="table center" id="airpodspro2">
@@ -8629,6 +9226,36 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
             </table>
           </div>
         </div>
+ <div class="device" onclick="showTable('airpods4')">
+      <div class="center">
+          <img src="/Bilder/airpods4.png" alt="Airpods4" width="200" height="200">
+          <p><b>AirPods 4th Gen.</b></p>
+        </div>
+            <div class="table center" id="airpods4">
+              <h1>AirPods 4th Gen.</h1>
+              <table>
+              <tr>
+                <th>Service</th>
+                <th>Preis</th>
+                <th>Dauer</th>
+                <th>Bemerkung</th>
+              </tr>
+              <tr>
+                <td>Einzelner Airpod</td>
+                <td>99€</td>
+                <td>3 - 4 Werktage</td>
+                <td>Meist ist ein Vorabtausch in der Technik erhältlich.</td>
+              </tr>
+              <tr>
+                <td>Ladecase</td>
+                <td>99€</td>
+                <td>3 - 4 Werktage</td>
+                <td>Kosten stets über <b>9801635</b> vorab kassieren. Im Falle eines Austausch ist eine Vorauszahlung nicht notwendig (AirPods zum Service annehmen).</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
         <div class="device" onclick="showTable('homepod1')">
       <div class="center">
           <img src="/Bilder/homepod1.png" alt="homepod1" width="200" height="200">
@@ -8728,7 +9355,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
               </tr>
               <tr>
                 <td>Batterietausch</td>
-                <td>55€</td>
+                <td>39€</td>
                 <td>3 - 4 Werktage</td>
                 <td>Nur möglich wenn sich der Pencil koppeln lässt und einen Batterieproblem besteht.</td>
               </tr>
@@ -8756,7 +9383,7 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
 
         <div class="device" onclick="showTable('pencil2')">
       <div class="center">
-          <img src="/Bilder/pencil2.png" alt="pencil 2" width="250" height="250">
+          <img src="/Bilder/pencil2.png" alt="pencil 2" width="200" height="200">
           <p><b>Apple Pencil 2nd Gen.</b></p>
         </div>
             <div class="table center" id="pencil2">
@@ -8770,13 +9397,13 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
               </tr>
               <tr>
                 <td>Komplettaustausch</td>
-                <td>130€</td>
+                <td>135€</td>
                 <td>3 - 4 Werktage</td>
                 <td></td>
               </tr>
               <tr>
                 <td>Batterietausch</td>
-                <td>55€</td>
+                <td>39€</td>
                 <td>3 - 4 Werktage</td>
                 <td>Nur möglich wenn sich der Pencil koppeln lässt und einen Batterieproblem besteht.</td>
               </tr>
@@ -8806,13 +9433,49 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
             </tr>
             <tr>
               <td>Komplettaustausch</td>
-              <td>TBA</td>
+              <td>89€</td>
               <td>3 - 4 Werktage</td>
               <td></td>
             </tr>
             <tr>
               <td>Batterietausch</td>
-              <td>TBA</td>
+              <td>39€</td>
+              <td>3 - 4 Werktage</td>
+              <td>Nur möglich wenn sich der Pencil koppeln lässt und einen Batterieproblem besteht.</td>
+            </tr>
+            <tr>
+              <td>Pencil Tip</td>
+              <td>12,95€</td>
+              <td>3 - 4 Werktage</td>
+              <td>Alternativ vierer Pack im Store erhältlich, für 25€.</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="device" onclick="showTable('pencilpro')">
+      <div class="center">
+        <img src="/Bilder/Pencilpro.png" alt="pencilpro" width="200" height="200">
+        <p><b>Apple Pencil Pro</b></p>
+      </div>
+          <div class="table center" id="pencilpro">
+            <h1>Apple Pencil Pro</h1>
+            <table>
+            <tr>
+              <th>Service</th>
+              <th>Preis</th>
+              <th>Dauer</th>
+              <th>Bemerkung</th>
+            </tr>
+            <tr>
+              <td>Komplettaustausch</td>
+              <td>135€</td>
+              <td>3 - 4 Werktage</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>Batterietausch</td>
+              <td>39€/td>
               <td>3 - 4 Werktage</td>
               <td>Nur möglich wenn sich der Pencil koppeln lässt und einen Batterieproblem besteht.</td>
             </tr>
@@ -8861,19 +9524,20 @@ Die betroffenen Geräte wurden zwischen März 2019 und Oktober 2019 hergestellt.
               <h1>USB-C Power Adapter (Macbook-Netzteile)</h1>
               <table>
               <p>Defekte USB-C Power Adapter können kostenpflichtig über die Technik getauscht werden, die Kosten unterscheiden sich jedoch kaum vom Kauf eines neuen Netzteils direkt im Store.
-        					      Ein Kauf im Store ist hinsichtlich längerer Garantie (1 Jahr statt 90 Tage) zu bevorzugen.
-    					      </p>
-    					      <h4>Austausch im Rahmen der Garantie oder Gewährleistung</h4>
-    					      <p>Wurde ein USB-C Power Adapter als Bestandteil eines Macs gekauft, ist das Netzteil über die Seriennummer des Macs zum Service anzunehmen.<br>
-        					      <strong>Für den Garantieservice muss zudem von einem Techniker mit dem Mac des Kunden eine Netzteildiagnose ausgeführt werden.</strong><br>
-        					      Sofern die Technik besetzt ist, kann die Diagnose direkt durchgeführt werden. Andernfalls muss das Netzteil zusammen mit dem Mac zum Service angenommen werden.<br>
-        					      Die Diagnose wird dann innerhalb eines Werktages durchgeführt, damit der Kunde das MacBook zeitnah wieder abholen kann. Bitte erstellt in dem Fall eine Aufgabe innerhalb des Servicefalls.</p>
+                        Ein Kauf im Store ist hinsichtlich längerer Garantie (1 Jahr statt 90 Tage) zu bevorzugen.
+                    </p>
+                    <h4>Austausch im Rahmen der Garantie oder Gewährleistung</h4>
+                    <p>Wurde ein USB-C Power Adapter als Bestandteil eines Macs gekauft, ist das Netzteil über die Seriennummer des Macs zum Service anzunehmen.<br>
+                        <strong>Für den Garantieservice muss zudem von einem Techniker mit dem Mac des Kunden eine Netzteildiagnose ausgeführt werden.</strong><br>
+                        Sofern die Technik besetzt ist, kann die Diagnose direkt durchgeführt werden. Andernfalls muss das Netzteil zusammen mit dem Mac zum Service angenommen werden.<br>
+                        Die Diagnose wird dann innerhalb eines Werktages durchgeführt, damit der Kunde das MacBook zeitnah wieder abholen kann. Bitte erstellt in dem Fall eine Aufgabe innerhalb des Servicefalls.</p>
             </table>
           </div>
         </div>
       </div>
 
 
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8f71bad78e59d2e3","version":"2024.10.5","r":1,"token":"64ed5d98fee2438d801b1e953737bced","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
 </body>
 </html>
 
